@@ -70,7 +70,7 @@ fi
 DUMP_NAME="dump-${TS}-${HOSTNAME}-${EXE_NAME}-${REAL_PID}-${SIGNAL}"
 
 head --bytes "${LIMIT_SIZE}" | tee ${DUMP_NAME}.core | (${COMPRESSOR} > "${DIRECTORY}/${DUMP_NAME}.core${EXT}")
-sleep 1
+
 CONT_NAME=$(cat ${DUMP_NAME}.core | strings | grep HOSTNAME | sed s/HOSTNAME=//g)
 rm ${DUMP_NAME}.core   
 
