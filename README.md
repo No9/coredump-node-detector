@@ -15,8 +15,7 @@ as a label to store the coredump files. The other part of this
 project provides the authorized user downloading according it.
 (See github.com/fenggw-fnst/coredump-detector)
 
-Currently the IBM Cloud is the only supported container platform but kcdt.sh should be swappable for 
-
+Currently IBM Cloud is the only supported container platform but kcdt.sh should be easily updateable for other cloud providers.
 
 ## Install
 
@@ -68,6 +67,3 @@ Currently the IBM Cloud is the only supported container platform but kcdt.sh sho
 
   You should have received a copy of the GNU General Public License
   along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-
-
