@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (c) 2019 FUJITSU LIMITED. All rights reserved.
-# Author: Hu Shuai <hus.fnst@cn.fujitsu.com>
+# Author: Guangwen Feng <fenggw-fnst@cn.fujitsu.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,15 +16,30 @@
 # You should have received a copy of the GNU General Public License
 #
 
-kcdt_pipe=/kcdt/host/kcdt.pipe
+trap "cleanup; exit" 1 2 3 15
 
-. /kcdt/helper.sh
+cleanup()
+{
+	kill `pgrep -x install.sh`
+	kill `pgrep -x log.sh`
+	kill `pgrep -x opener.sh`
+}
 
 while true; do
-	if [ ! -p $kcdt_pipe ]; then
-		sleep 1
-		continue
+	pgrep -x install.sh >/dev/null
+	if [ $? -ne 0 ]; then
+		/kcdt/install.sh &
 	fi
 
-	cat <>$kcdt_pipe
+	pgrep -x log.sh >/dev/null
+	if [ $? -ne 0 ]; then
+		/kcdt/log.sh &
+	fi
+
+	pgrep -x opener.sh >/dev/null
+	if [ $? -ne 0 ]; then
+		/kcdt/opener.sh &
+	fi
+
+	sleep 1
 done

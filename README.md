@@ -15,7 +15,7 @@ as a label to store the coredump files. The other part of this
 project provides the authorized user downloading according it.
 (See github.com/fenggw-fnst/coredump-detector)
 
-Currently the container runtimes it supports are docker and cri-o.
+Currently the IBM Cloud is the only supported container platform but kcdt.sh should be swappable for 
 
 
 ## Install
@@ -51,11 +51,6 @@ Currently the container runtimes it supports are docker and cri-o.
 
 3. Other build options are available - Just type `make` to see them.
 
-## Open Source licenses
-  * cURL: MIT/X derivate license
-  * cJSON: MIT
-  * procps: GNU GPLv2
-
 ## License
 
   Copyright (c) 2019 FUJITSU LIMITED. All rights reserved.
@@ -73,4 +68,6 @@ Currently the container runtimes it supports are docker and cri-o.
 
   You should have received a copy of the GNU General Public License
   along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+
 

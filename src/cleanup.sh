@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (c) 2019 FUJITSU LIMITED. All rights reserved.
 # Author: Guangwen Feng <fenggw-fnst@cn.fujitsu.com>
@@ -18,7 +18,7 @@
 
 run_pid=/kcdt/run.pid
 kcdt_pipe=/kcdt/host/kcdt.pipe
-install_dst=/kcdt/host/kcdt
+install_dst=/kcdt/host/kcdt.sh
 core_pattern_rst=/kcdt/core_pattern.rst
 core_pipe_limit_rst=/kcdt/core_pipe_limit.rst
 coredump_mp=/kcdt/host/core

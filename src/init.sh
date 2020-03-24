@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (c) 2019 FUJITSU LIMITED. All rights reserved.
 # Author: Guangwen Feng <fenggw-fnst@cn.fujitsu.com>

@@ -1,9 +1,4 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: kcdt
----
-apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: coredump-admin
@@ -47,7 +42,7 @@ spec:
     spec:
       containers:
       - name: kcdt-container
-        image: fenggw/kcdt:latest
+        image: number9/kcdt:v1.0.17
         securityContext:
           privileged: true
         volumeMounts:
@@ -67,7 +62,7 @@ spec:
           # for every k8s namespace, this is optional,
           # default value is 1 GB.
         - name: NS_DISK_QUOTA
-          value: "100mb"
+          value: "1000mb"
         command: ["/kcdt/init.sh"]
         lifecycle:
           preStop:
@@ -78,7 +73,7 @@ spec:
       - name: tz-config
         hostPath:
           # Change the path to the timezone of your host.
-          path: /usr/share/zoneinfo/Asia/Shanghai
+          path: /usr/share/zoneinfo/UTC
       - name: host-volume
         hostPath:
           # The coredump handler program and related files will
@@ -89,6 +84,5 @@ spec:
       - name: coredump-backend
         # The coredump files will be stored here, please config
         # your own storage backend here with nfs or ceph etc..
-        nfs:
-          server: $YOUR-SERVER-IP
-          path: $YOUR-PATH
+        persistentVolumeClaim:
+          claimName: kcdt-storage

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (c) 2019 FUJITSU LIMITED. All rights reserved.
 # Author: Guangwen Feng <fenggw-fnst@cn.fujitsu.com>
@@ -14,10 +14,10 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-#
+# /root/kcdt.sh -c=%c -e=%e -p=%p -s=%s -t=%t -d=/root/core -r=10
 
-install_src=/kcdt/kcdt
-install_dst=/kcdt/host/kcdt
+install_src=/kcdt/kcdt.sh
+install_dst=/kcdt/host/kcdt.sh
 kcdt_pipe=/kcdt/host/kcdt.pipe
 
 . /kcdt/helper.sh
@@ -34,13 +34,14 @@ else
 	ns_disk_quota=`echo $NS_DISK_QUOTA | tr -d ' \t'`
 fi
 
-core_pattern="|$hostvol/kcdt $ns_disk_quota %c %d %e %E %g %h %i %I %p %P %s %t %u"
+core_pattern="|$hostvol/kcdt.sh -c=%c -e=%e -p=%p -s=%s -t=%t -d=/root/core -r=10"
 core_pipe_limit=64
 
 install()
 {
 	if [ ! -x $install_dst ]; then
 		cp $install_src $install_dst
+		chmod +x $install_dst
 		if [ $? -eq 0 ]; then
 			loggerf INFO "kcdt was installed successfully"
 		else
