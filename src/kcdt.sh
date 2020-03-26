@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Copyright IBM Corp. 2020. All Rights Reserved.
-# This file is licensed under the MIT License.
-# License text available at https://opensource.org/licenses/MIT
+# This file is licensed under the GPL v2 License.
+# License text available at https://opensource.org/licenses/GPL-2.0
 
-# Based of the https://github.com/alexey-medvedchikov/core-dump-handler
+# Based on https://github.com/alexey-medvedchikov/core-dump-handler
+# A Version of this software that was distributed under MIT License
 
 PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 

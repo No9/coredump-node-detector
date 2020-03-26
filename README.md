@@ -36,22 +36,13 @@ This conatiner can be deployed manually but it is recommended to use the [IBM Co
 
 3. Other build options are available - Just type `make` to see them.
 
+
+## Attribution
+  Specific files carry their notices but this project is based on work by:
+
+  Author: Guangwen Feng <fenggw-fnst@cn.fujitsu.com>
+
 ## License
 
-  Copyright (c) 2019 FUJITSU LIMITED. All rights reserved.
-  Author: Guangwen Feng <fenggw-fnst@cn.fujitsu.com>
-  Copyright IBM Corp. 2020. All Rights Reserved.
-  Author: Anthony Whalley<awhalley@ie.ibm.com>
-  
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program. If not, see <http://www.gnu.org/licenses/>.
+GPL v2 
+See LICENSE file at the root of this project.
