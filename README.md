@@ -2,7 +2,7 @@ kcdt
 ====
 
 A core dump handler program for kubernetes cluster.
-Based on work by [Guangwen Feng](https://github.com/fenggw-fnst/coredump-node-detector)
+Based on work by [Guangwen Feng](https://github.com/fenggw-fnst/coredump-node-detector) and [Alexey Medvedchikov](https://github.com/alexey-medvedchikov/core-dump-handler)
 
 It works on the host machine of every k8s node by the way of
 "Piping core dumps to a program" (See man 5 core for details).
@@ -41,6 +41,7 @@ This conatiner can be deployed manually but it is recommended to use the [IBM Co
   Specific files carry their notices but this project is based on work by:
 
   Author: Guangwen Feng <fenggw-fnst@cn.fujitsu.com>
+  Author: Alexey Medvedchikov <>
 
 ## License
 
