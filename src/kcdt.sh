@@ -6,7 +6,7 @@
 # Based on https://github.com/alexey-medvedchikov/core-dump-handler
 # A Version of this software that was distributed under MIT License
 
-PATH="/bin:/sbin:/usr/bin:/usr/sbin"
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin"
 
 umask 0177
 
