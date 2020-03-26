@@ -10,8 +10,6 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 
 umask 0177
 
-DIRECTORY="/root/core"
-
 for i in "$@"
 do
 case $i in
@@ -58,12 +56,6 @@ elif gzip --version >/dev/null 2>&1; then
 else
     COMPRESSOR=cat
     EXT=
-fi
-
-if [[ ! -d "${DIRECTORY}" ]]; then
-    mkdir -p "${DIRECTORY}"
-    chown root:root "${DIRECTORY}"
-    chmod 0600 "${DIRECTORY}"
 fi
 
 

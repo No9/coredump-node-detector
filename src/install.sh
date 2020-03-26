@@ -14,7 +14,6 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# /root/kcdt.sh -c=%c -e=%e -p=%p -s=%s -t=%t -d=/root/core -r=10
 
 install_src=/kcdt/kcdt.sh
 install_dst=/kcdt/host/kcdt.sh
@@ -34,7 +33,7 @@ else
 	ns_disk_quota=`echo $NS_DISK_QUOTA | tr -d ' \t'`
 fi
 
-core_pattern="|$hostvol/kcdt.sh -c=%c -e=%e -p=%p -s=%s -t=%t -d=/root/core -r=10"
+core_pattern="|$hostvol/kcdt.sh -c=%c -e=%e -p=%p -s=%s -t=%t -d=$hostvol/core -h=%h -E=%E"
 core_pipe_limit=64
 
 install()
