@@ -2,6 +2,7 @@ kcdt
 ====
 
 A core dump handler program for kubernetes cluster.
+Based on work by [Guangwen Feng](https://github.com/fenggw-fnst/coredump-node-detector)
 
 It works on the host machine of every k8s node by the way of
 "Piping core dumps to a program" (See man 5 core for details).
@@ -11,42 +12,27 @@ managed by a privileged pod deployed via k8s daemonset.
 
 When a core dump occurred, it will collect the k8s related
 information such as k8s namespace, pod uid and container name
-as a label to store the coredump files. The other part of this
-project provides the authorized user downloading according it.
-(See github.com/fenggw-fnst/coredump-detector)
+as a label to store the coredump files. 
+The file is then saved to a location on the host server.
+When used with the IBM Cloud Object storage plugin the dumps can be accessed through the storage UI and API.
 
 Currently IBM Cloud is the only supported container platform but kcdt.sh should be easily updateable for other cloud providers.
 
 ## Install
 
-1. Prerequisites:
-  * k8s cluster must be --allow-privileged=true
-  * libcurl
-
-2. Deploy:
-  Complete the k8s daemonset configuration file refer to sample.yaml.
-  $ kubectl create -f sample.yaml
-
+This conatiner can be deployed manually but it is recommended to use the [IBM Core Dump Handler](https://github.com/No9/ibm-core-dump-handler) helm chart.
 
 ## Build Local
 
-1. Prerequisites:
-  * libcurl
-  * cJSON (static compilation)
-  * procps (static compilation)
+1. Build docker image:
+  `$ cd build`
+  `$ docker build -t name:tag .`
 
-2. Compile:
-  $ gcc kcdt.c -o build/kcdt -lcurl -l:libcjson.a -l:libprocps.a -Wall
+## Build Push
 
-3. Build docker image:
-  $ cd build
-  $ docker build -t name:tag .
-
-## Build Docker
-
-1. Update build.env with your image tag options 
+1. Update `build.env` with your image tag options 
  
-2. $ make image
+2. `$ make all`
 
 3. Other build options are available - Just type `make` to see them.
 
