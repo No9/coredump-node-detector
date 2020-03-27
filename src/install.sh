@@ -15,6 +15,9 @@
 #
 # You should have received a copy of the GNU General Public License
 
+install_src=/kcdt/kcdt.sh
+install_dst=/kcdt/host/kcdt.sh
+kcdt_pipe=/kcdt/host/kcdt.pipe
 
 . /kcdt/helper.sh
 
@@ -23,10 +26,6 @@ if [ -z $HOSTVOL ]; then
 else
 	hostvol=$HOSTVOL
 fi
-
-install_src=/kcdt/kcdt.sh
-install_dst=$hostvol/kcdt.sh
-kcdt_pipe=$hostvol/kcdt.pipe
 
 if [ -z "$NS_DISK_QUOTA" ]; then
 	ns_disk_quota="1GB"

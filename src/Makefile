@@ -6,7 +6,7 @@ dpl ?= build.env
 include $(dpl)
 export $(shell sed 's/=.*//' $(dpl))
 
-.PHONY: clean help local image push all base pushbase
+.PHONY: help image push all tag
 
 # HELP
 # This will output the help for each task
@@ -25,7 +25,6 @@ push: ## Push image to your a docker repo.
 
 tag: ## Creates a tag for git
 	@git tag $(VERSION_TAG) && git push origin $(VERSION_TAG)
-
 
 all: ## Run image and push as one command.
 	make image
