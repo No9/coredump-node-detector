@@ -23,10 +23,10 @@ image: ## Builds kcdt in an image then creates a run image based on hte build.en
 push: ## Push image to your a docker repo.
 	@docker push $(DOCKER_REPO)/$(APP_NAME):$(VERSION_TAG)
 
-basepush: ## Push base image to your a docker repo.
-	@docker push $(BASE_DOCKER_REPO)/$(BASE_APP_NAME):$(BASE_VERSION_TAG)
+tag: ## Creates a tag for git
+	@git tag $(VERSION_TAG) && git push origin $(VERSION_TAG)
 
 
 all: ## Run image and push as one command.
 	make image
-	make push
+	make tag
