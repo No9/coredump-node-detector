@@ -67,3 +67,5 @@ CONT_NAME=$(cat ${DUMP_NAME}.core | strings | grep HOSTNAME | sed s/HOSTNAME=//g
 rm ${DUMP_NAME}.core   
 
 crictl inspectp -o json `crictl pods | grep ${CONT_NAME} | awk '{ print($1)}'` > "${DIRECTORY}/${DUMP_NAME}.json"
+
+chown 444 "${DIRECTORY}/${DUMP_NAME}.core${EXT}" "${DIRECTORY}/${DUMP_NAME}.json"
