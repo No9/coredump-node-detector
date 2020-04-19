@@ -1,5 +1,11 @@
 # kcdt changelog
 
+## 2020-04-19 v1.0.27
+
+### notable changes 
+
+Version clash
+
 ## 2020-04-19 v1.0.26
 
 ### notable changes 
