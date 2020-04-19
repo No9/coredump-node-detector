@@ -1,5 +1,11 @@
 # kcdt changelog
 
+## 2020-04-19 v1.0.26
+
+### notable changes 
+
+Fix bug in pod identity
+
 ## 2020-04-19 v1.0.25
 
 ### notable changes 
