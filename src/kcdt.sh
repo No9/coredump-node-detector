@@ -67,5 +67,7 @@ CONT_NAME=$(cat ${DUMP_NAME}.core | strings | grep HOSTNAME | sed s/HOSTNAME=//g
 rm ${DUMP_NAME}.core   
 
 crictl inspectp -o json `crictl pods | grep ${CONT_NAME} | awk '{ print($1)}'` > "${DIRECTORY}/${DUMP_NAME}.json"
+IMAGE_ID=$(crictl ps -p ${CONT_NAME} | grep ${CONT_NAME} | awk '{ print($2) }')
+crictl img | grep $IMAGE_ID | awk '{ printf( "{ \"repo\":\"%s\", \"tag\": \"%s\", \"id\": \"%s\", \"size\": \"%s\" }\n", $1, $2, $3, $4 )}' > "${DIRECTORY}/${DUMP_NAME}-image.json" 
 
-chown 444 "${DIRECTORY}/${DUMP_NAME}.core${EXT}" "${DIRECTORY}/${DUMP_NAME}.json"
+chown 444 "${DIRECTORY}/${DUMP_NAME}.core${EXT}" "${DIRECTORY}/${DUMP_NAME}.json" "${DIRECTORY}/${DUMP_NAME}-image-info.json"
