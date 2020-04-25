@@ -44,13 +44,7 @@ if [[ "_0" = "_${LIMIT_SIZE}" ]]; then
     exit 0
 fi
 
-if lz4 --version >/dev/null 2>&1; then
-    COMPRESSOR="lz4 -1"
-    EXT=.lz4
-elif lzop --version >/dev/null 2>&1; then
-    COMPRESSOR="lzop -1"
-    EXT=.lzo
-elif gzip --version >/dev/null 2>&1; then
+if gzip --version >/dev/null 2>&1; then
     COMPRESSOR="gzip -3"
     EXT=.gz
 else
@@ -66,7 +60,7 @@ head --bytes "${LIMIT_SIZE}" | tee ${DUMP_NAME}.core | (${COMPRESSOR} > "${DIREC
 CONT_NAME=$(cat ${DUMP_NAME}.core | strings | grep HOSTNAME | sed s/HOSTNAME=//g)
 rm ${DUMP_NAME}.core   
 
-crictl inspectp -o json `crictl pods | grep ${CONT_NAME} | awk '{ print($1)}'` > "${DIRECTORY}/${DUMP_NAME}.json"
+crictl inspectp -o json `crictl pods | grep ${CONT_NAME} | awk '{ print($1)}'` > "${DIRECTORY}/${DUMP_NAME}-runtime-info.json"
 
 POD_ID=$(crictl pods | grep ${CONT_NAME} | awk '{ print($1)}')
 
@@ -74,4 +68,4 @@ IMAGE_ID=$(crictl ps -p ${POD_ID} | grep ${POD_ID} | awk '{ print($2) }')
 
 crictl img | grep $IMAGE_ID | awk '{ printf( "{ \"repo\":\"%s\", \"tag\": \"%s\", \"id\": \"%s\", \"size\": \"%s\" }\n", $1, $2, $3, $4 )}' > "${DIRECTORY}/${DUMP_NAME}-image-info.json"
 
-chown 444 "${DIRECTORY}/${DUMP_NAME}.core${EXT}" "${DIRECTORY}/${DUMP_NAME}.json" "${DIRECTORY}/${DUMP_NAME}-image-info.json"
+chown 444 "${DIRECTORY}/${DUMP_NAME}.core${EXT}" "${DIRECTORY}/${DUMP_NAME}-runtime-info.json" "${DIRECTORY}/${DUMP_NAME}-image-info.json"

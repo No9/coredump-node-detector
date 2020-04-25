@@ -1,5 +1,12 @@
 # kcdt changelog
 
+## 2020-04-25 v1.1.0
+
+### notable changes 
+
+Define name for runtime JSON
+Standardize on gz format
+
 ## 2020-04-19 v1.0.27
 
 ### notable changes 
