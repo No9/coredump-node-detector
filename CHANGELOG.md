@@ -1,4 +1,14 @@
 # kcdt changelog
+## 2020-04-25 v1.2.1
+
+### notable changes 
+Bugfix HOSTNAME
+
+## 2020-04-25 v1.2.0
+
+### notable changes 
+
+Generate dump info json
 
 ## 2020-04-25 v1.1.0
 

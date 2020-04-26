@@ -56,7 +56,8 @@ UUID=$(uuidgen)
 
 DUMP_NAME="${UUID}-dump-${TS}-${HOSTNAME}-${EXE_NAME}-${REAL_PID}-${SIGNAL}"
 
-echo "{ \"uuid\":\"${UUID}\", \"timestamp\": \"${TS}\", \"hostname\": \"${$HOSTNAME}\", \"exe\": \"${EXE_NAME}\", \"real_pid\": \"${REAL_PID}\", \"signal\": \"${SIGNAL}\" }\n" > "${DIRECTORY}/${DUMP_NAME}-dump-info.json" 
+echo "{ \"uuid\":\"${UUID}\", \"timestamp\": \"${TS}\", \"hostname\": \"${HOSTNAME}\", \"exe\": \"${EXE_NAME}\", \"real_pid\": \"${REAL_PID}\", \"signal\": \"${SIGNAL}\" }\n" > "${DIRECTORY}/${DUMP_NAME}-dump-info.json" 
+
 head --bytes "${LIMIT_SIZE}" | tee ${DUMP_NAME}.core | (${COMPRESSOR} > "${DIRECTORY}/${DUMP_NAME}.core${EXT}")
 
 CONT_NAME=$(cat ${DUMP_NAME}.core | strings | grep HOSTNAME | sed s/HOSTNAME=//g)
