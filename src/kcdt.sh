@@ -56,7 +56,7 @@ UUID=$(uuidgen)
 
 DUMP_NAME="${UUID}-dump-${TS}-${HOSTNAME}-${EXE_NAME}-${REAL_PID}-${SIGNAL}"
 
-echo "{ \"uuid\":\"${UUID}\", \"dump_file\":\"${DUMP_NAME}.core${EXT}\", \"ext\": \"${EXT}\", \"timestamp\": \"${TS}\", \"hostname\": \"${HOSTNAME}\", \"exe\": \"${EXE_NAME}\", \"real_pid\": \"${REAL_PID}\", \"signal\": \"${SIGNAL}\" }\n" > "${DIRECTORY}/${DUMP_NAME}-dump-info.json" 
+echo "{ \"uuid\":\"${UUID}\", \"dump_file\":\"${DUMP_NAME}.core${EXT}\", \"ext\": \"${EXT}\", \"timestamp\": \"${TS}\", \"hostname\": \"${HOSTNAME}\", \"exe\": \"${EXE_NAME}\", \"real_pid\": \"${REAL_PID}\", \"signal\": \"${SIGNAL}\" }" > "${DIRECTORY}/${DUMP_NAME}-dump-info.json" 
 
 head --bytes "${LIMIT_SIZE}" | tee ${DUMP_NAME}.core | (${COMPRESSOR} > "${DIRECTORY}/${DUMP_NAME}.core${EXT}")
 
