@@ -71,4 +71,4 @@ IMAGE_ID=$(crictl ps -p ${POD_ID} | grep ${POD_ID} | awk '{ print($2) }')
 
 crictl img | grep $IMAGE_ID | awk '{ printf( "{ \"repo\":\"%s\", \"tag\": \"%s\", \"id\": \"%s\", \"size\": \"%s\" }\n", $1, $2, $3, $4 )}' > "${DIRECTORY}/${DUMP_NAME}-image-info.json"
 
-chown 444 "${DIRECTORY}/${DUMP_NAME}.core${EXT}" "${DIRECTORY}/${DUMP_NAME}-runtime-info.json" "${DIRECTORY}/${DUMP_NAME}-image-info.json"
+chmod 444 "${DIRECTORY}/${DUMP_NAME}.core${EXT}" "${DIRECTORY}/${DUMP_NAME}-runtime-info.json" "${DIRECTORY}/${DUMP_NAME}-image-info.json" "${DIRECTORY}/${DUMP_NAME}-dump-info.json"
